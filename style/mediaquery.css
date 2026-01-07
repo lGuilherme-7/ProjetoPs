@@ -1,54 +1,54 @@
-/* ================= RESPONSIVO - 100% FUNCIONAL ================= */
+/* ================= MEDIA QUERY - MOBILE ================= */
 @media (max-width: 768px) {
     
-    /* ========= ESCONDE MENU E MOSTRA HAMBÚRGUER ========= */
+    /* MOSTRA o hambúrguer */
     .menu-toggle {
-        display: block !important; /* FORÇA aparecer */
+        display: block !important;
     }
 
-    /* Menu lateral */
+    /* ESCONDE e transforma o menu em lateral */
     .navList {
         position: fixed;
         top: 0;
-        right: -100%; /* Começa escondido */
+        right: -100%; /* Começa FORA da tela */
         width: 75%;
-        max-width: 320px;
+        max-width: 300px;
         height: 100vh;
         background: var(--color-white);
+        
+        /* IMPORTANTE: Muda para vertical */
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 35px;
-        box-shadow: -5px 0 20px rgba(0,0,0,0.3);
-        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        gap: 30px;
+        
+        /* Sombra e animação */
+        box-shadow: -5px 0 20px rgba(0,0,0,0.4);
+        transition: right 0.4s ease;
         z-index: 1001;
         padding: 40px 20px;
-        overflow-y: auto; /* Se tiver muitos links */
     }
 
-    /* Menu aberto */
+    /* Quando ATIVO (menu aberto) */
     .navList.active {
-        right: 0 !important; /* FORÇA deslizar */
+        right: 0 !important;
     }
 
-    /* Links do menu mobile */
+    /* Links no mobile */
     .navList a {
-        font-size: 1.4rem;
-        margin: 0;
+        font-size: 1.3rem;
         width: 100%;
         text-align: center;
-        padding: 15px 20px;
+        padding: 12px 20px;
         border-radius: 8px;
-        transition: all 0.3s;
     }
 
     .navList a:hover {
         background: var(--color-base-muted);
-        color: var(--color-primary);
     }
 
-    /* ========= OVERLAY (fundo escuro quando menu abre) ========= */
-    .navList.active::before {
+    /* Overlay escuro */
+    body.menu-open::before {
         content: '';
         position: fixed;
         top: 0;
@@ -56,10 +56,10 @@
         right: 0;
         bottom: 0;
         background: rgba(0,0,0,0.5);
-        z-index: -1;
+        z-index: 999;
     }
 
-    /* ========= HERO ========= */
+    /* ========= RESTO DO MOBILE ========= */
     .hero {
         padding: 50px 0;
     }
@@ -72,166 +72,48 @@
 
     .hero-text h2 {
         font-size: 1.6rem;
-        line-height: 1.3;
-    }
-
-    .hero-text p {
-        font-size: 0.95rem;
     }
 
     .hero-image {
         order: -1;
-        width: 100%;
     }
 
     .hero img {
         width: 85%;
         max-width: 280px;
-        margin: 0 auto;
     }
 
-    /* ========= BOTÕES ========= */
     .btn {
-        padding: 12px 28px;
-        font-size: 0.95rem;
         width: 100%;
         max-width: 280px;
-        text-align: center;
     }
 
-    /* ========= SEÇÕES ========= */
     .section {
         padding: 40px 0;
     }
 
     .container {
         width: 92%;
-        padding: 0 15px;
     }
 
-    h3 {
-        font-size: 1.6rem;
-        margin-bottom: 20px;
-    }
-
-    p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
-    /* ========= CARDS ========= */
     .cards {
         grid-template-columns: 1fr;
-        gap: 20px;
     }
 
-    .card {
-        padding: 24px;
-    }
-
-    .card h4 {
-        font-size: 1.1rem;
-    }
-
-    /* ========= SERVIÇOS ========= */
     .services-list {
         grid-template-columns: 1fr;
-        gap: 12px;
     }
 
-    .services-list li {
-        padding: 14px 20px;
-        font-size: 0.95rem;
-    }
-
-    /* ========= VÍDEO ========= */
-    .video-container {
-        max-width: 100%;
-        margin: 20px auto;
-    }
-
-    .video-container iframe {
-        height: 220px;
-    }
-
-    /* ========= ARTIGOS ========= */
     .articles-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .article-image img {
-        height: 180px;
-    }
-
-    .article-content {
-        padding: 20px;
-    }
-
-    .article-content h4 {
-        font-size: 1.1rem;
-    }
-
-    .article-content p {
-        font-size: 0.9rem;
-    }
-
-    /* ========= FAQ ========= */
-    .faq-question {
-        font-size: 0.95rem;
-        padding: 16px 18px;
-    }
-
-    .faq-answer p {
-        font-size: 0.9rem;
-        padding: 16px 18px;
-    }
-
-    /* ========= INFO LIST ========= */
-    .info-list li {
-        font-size: 0.95rem;
-    }
-
-    /* ========= FOOTER ========= */
-    .footer {
-        padding: 40px 0 20px;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 25px;
         text-align: center;
     }
 
-    .footer-section h4 {
-        font-size: 1rem;
-    }
-
-    .footer-section p,
-    .footer-section a {
-        font-size: 0.9rem;
-    }
-
-    .footer-bottom p {
-        font-size: 0.85rem;
-    }
-}
-
-/* ========= TELAS MUITO PEQUENAS (< 400px) ========= */
-@media (max-width: 400px) {
-    .navList {
-        width: 85%;
-    }
-
-    .hero-text h2 {
-        font-size: 1.4rem;
-    }
-
-    .container {
-        width: 95%;
-    }
-
-    h3 {
-        font-size: 1.4rem;
+    .video-container iframe {
+        height: 220px;
     }
 }

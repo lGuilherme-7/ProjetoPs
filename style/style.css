@@ -103,12 +103,14 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
     font-size: 1.5rem;
     color: var(--color-primary);
     margin: 0;
+    z-index: 1002;
 }
 
 .navList {
@@ -123,23 +125,27 @@ ul {
     font-weight: 550;
     font-size: 0.95rem;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .navList a:hover {
     color: var(--color-secondary);
 }
 
+
 /* ================= MENU HAMBÚRGUER ================= */
 .menu-toggle {
-    display: none;
+    display: none; /* Escondido por padrão */
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--color-primary);
     cursor: pointer;
-    z-index: 1001;
-    padding: 10px;
+    z-index: 1002;
+    padding: 5px;
+    line-height: 1;
 }
+
 
 @media (max-width: 768px) {
     .menu-toggle {
@@ -446,4 +452,17 @@ ul {
 .footer-bottom p {
     margin: 5px 0;
     font-size: 0.9rem;
+}
+
+ody.menu-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+}
+
+/* ================= REVEAL CORRIGIDO ================= */
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease;
 }
