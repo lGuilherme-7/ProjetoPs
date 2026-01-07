@@ -1,65 +1,98 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. Menu Hambúrguer ---
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.nav');
-    const navLinks = document.querySelectorAll('.nav a');
+    // ========= MENU HAMBÚRGUER - SOLUÇÃO COMPLETA =========
+    const menuToggle = document.getElementById('menuToggle');
+    const navList = document.getElementById('navList');
+    const navLinks = document.querySelectorAll('.navList a');
+    const body = document.body;
 
-    // Abrir/Fechar ao clicar no ícone
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        hamburger.classList.toggle('active'); // Opcional: para animar o ícone virando um X
-    });
+    console.log('Menu Toggle:', menuToggle);
+    console.log('Nav List:', navList);
 
-    // Fechar menu ao clicar em um link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
+    if (menuToggle && navList) {
+        // Abre/fecha ao clicar no hambúrguer
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que o clique "vaze"
+            navList.classList.toggle('active');
+            
+            // Previne scroll quando menu aberto
+            if (navList.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
+            }
+            
+            console.log('Menu toggled! Active:', navList.classList.contains('active'));
         });
-    });
 
-    // --- 2. FAQ Accordion (Animação Suave) ---
+        // Fecha ao clicar em um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+                body.style.overflow = '';
+                console.log('Link clicado, menu fechado');
+            });
+        });
+
+        // Fecha ao clicar fora (no overlay)
+        document.addEventListener('click', (e) => {
+            if (navList.classList.contains('active') && 
+                !navList.contains(e.target) && 
+                !menuToggle.contains(e.target)) {
+                navList.classList.remove('active');
+                body.style.overflow = '';
+                console.log('Clicou fora, menu fechado');
+            }
+        });
+
+        // Fecha ao apertar ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navList.classList.contains('active')) {
+                navList.classList.remove('active');
+                body.style.overflow = '';
+                console.log('ESC pressionado, menu fechado');
+            }
+        });
+    }
+
+    // ========= FAQ ACCORDION =========
     const faqItems = document.querySelectorAll('.faq-item');
 
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
 
-        question.addEventListener('click', () => {
-            // Fecha os outros (opcional - se quiser que fique só um aberto por vez)
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                    otherItem.querySelector('.faq-answer').style.maxHeight = null;
-                }
+        if (question && answer) {
+            question.addEventListener('click', () => {
+                // Fecha outros
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Toggle do atual
+                const isActive = item.classList.toggle('active');
+                console.log('FAQ clicado! Active:', isActive);
             });
-
-            // Toggle do atual
-            item.classList.toggle('active');
-
-            if (item.classList.contains('active')) {
-                answer.style.maxHeight = answer.scrollHeight + "px";
-            } else {
-                answer.style.maxHeight = null;
-            }
-        });
+        }
     });
 
-    // --- 3. Scroll Reveal (Animação ao rolar) ---
-    const reveals = document.querySelectorAll('.reveal');
+    // ========= SCROLL REVEAL (opcional - só se quiser) =========
+    const reveals = document.querySelectorAll('.reveal-hidden');
 
     function revealOnScroll() {
         const windowHeight = window.innerHeight;
-        const elementVisible = 100;
-
         reveals.forEach((reveal) => {
             const elementTop = reveal.getBoundingClientRect().top;
-            if (elementTop < windowHeight - elementVisible) {
+            if (elementTop < windowHeight - 100) {
                 reveal.classList.add('active');
             }
         });
     }
 
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Chama uma vez para verificar o que já está na tela
+    if (reveals.length > 0) {
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    }
 });

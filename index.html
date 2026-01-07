@@ -20,16 +20,21 @@
     <div class="container">
         <h1 class="logo">Psicóloga</h1>
 
+        <!-- Botão menu hambúrguer -->
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
         <!-- Menu de navegação -->
-        <nav class="nav">
+        <nav class="navList" id="navList">
             <a href="#sobre">Sobre</a>
             <a href="#abordagem">Abordagem</a>
             <a href="#sobremim">Sobre mim</a>
             <a href="#servicos">Serviços</a>
             <a href="#faq">Dúvidas</a>
+            <a href="#artigo">Artigos</a>
             <a href="#contato">Contato</a>
         </nav>
     </div>
+    
 </header>
 
 <!-- ================= HERO / INÍCIO ================= -->
@@ -44,9 +49,12 @@
         </div>
 
         <div class="hero-image">
-            <img src="img/foto-profissional.jpg" alt="Foto profissional da psicóloga">
+            <img src="img/foto-profissional.jpg" 
+            alt="Foto profissional da psicóloga">
         </div>
     </div>
+
+    
 </section>
 
 <!-- ================= SOBRE ================= -->
@@ -65,6 +73,24 @@
             <li><strong>CRP:</strong> 00/00000</li>
             <li><strong>Atendimento:</strong> Online e presencial</li>
         </ul>
+
+        <!-- ================= VÍDEO ================= -->
+<section id="video" class="section reveal">
+    <div class="container">
+        <h3>Um pouco sobre mim</h3>
+        <div class="video-container">
+            <!-- SUBSTITUIR pelo vídeo real depois -->
+            <iframe 
+                width="100%" 
+                height="450" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
 
     </div>
 
@@ -117,22 +143,18 @@
 </section>
 
 <!-- ================= FAQ ================= -->
+<!-- ================= FAQ ================= -->
 <section id="faq" class="section reveal">
     <div class="container">
         <h3>Perguntas frequentes</h3>
 
         <div class="faq-item">
-        <button class="faq-question">
-            <span>Como funciona a terapia?</span>
-            <span class="arrow">▼</span>
-        </button>
-
+            <button class="faq-question">
+                <span>Como funciona a terapia?</span>
+                <span class="arrow">▼</span>
+            </button>
             <div class="faq-answer">
-                 <p>
-                    A terapia é um espaço de escuta e acolhimento
-                    onde o processo acontece de forma gradual
-                    respeitando o ritmo de cada pessoa.
-                </p>
+                <p>A terapia é um espaço de escuta e acolhimento onde o processo acontece de forma gradual, respeitando o ritmo de cada pessoa.</p>
             </div>
         </div>
 
@@ -142,13 +164,114 @@
                 <span class="arrow">▼</span>
             </button>
             <div class="faq-answer">
-                <p>
-                    Sim o atendimento online é regulamentado pelo Conselho de Psicologia
-                    e mantém o sigilo e a qualidade do atendimento presencial
-                </p>
+                <p>Sim, o atendimento online é regulamentado pelo Conselho de Psicologia e mantém o sigilo e a qualidade do atendimento presencial.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Quanto custa a consulta?</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>O valor da consulta é R$ 150,00. Aceito pagamentos via PIX, transferência ou cartão.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Quanto tempo dura cada sessão?</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Cada sessão tem duração de 50 minutos.</p>
             </div>
         </div>
     </div>
+</section>
+
+<!-- ================= ARTIGOS ================= -->
+<section id="artigos" class="section reveal">
+    <div class="container">
+        <h3>Artigos sobre saúde mental</h3>
+        
+        <div class="articles-grid">
+            <article class="article-card reveal">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400" alt="Ansiedade">
+                </div>
+                <div class="article-content">
+                    <h4>Como lidar com a ansiedade no dia a dia</h4>
+                    <p>Estratégias práticas para reduzir sintomas ansiosos e recuperar o equilíbrio emocional.</p>
+                    <a href="#" class="article-link">Ler mais →</a>
+                </div>
+            </article>
+
+            <article class="article-card reveal">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400" alt="Autoconhecimento">
+                </div>
+                <div class="article-content">
+                    <h4>A importância do autoconhecimento</h4>
+                    <p>Entenda como conhecer a si mesmo pode transformar sua vida e relacionamentos.</p>
+                    <a href="#" class="article-link">Ler mais →</a>
+                </div>
+            </article>
+
+            <article class="article-card reveal">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400" alt="Depressão">
+                </div>
+                <div class="article-content">
+                    <h4>Depressão: sinais e quando buscar ajuda</h4>
+                    <p>Reconheça os sintomas e entenda a importância do acompanhamento profissional.</p>
+                    <a href="#" class="article-link">Ler mais →</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+    <!-- ================= ARTIGOS ================= -->
+<section id="artigos" class="section reveal">
+    <div class="container">
+        <h3>Artigos sobre saúde mental</h3>
+        
+        <div class="articles-grid">
+            <article class="article-card reveal">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400" alt="Ansiedade">
+                </div>
+                <div class="article-content">
+                    <h4>Como lidar com a ansiedade no dia a dia</h4>
+                    <p>Estratégias práticas para reduzir sintomas ansiosos e recuperar o equilíbrio emocional.</p>
+                    <a href="#" class="article-link">Ler mais →</a>
+                </div>
+            </article>
+
+            <article class="article-card reveal">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400" alt="Autoconhecimento">
+                </div>
+                <div class="article-content">
+                    <h4>A importância do autoconhecimento</h4>
+                    <p>Entenda como conhecer a si mesmo pode transformar sua vida e relacionamentos.</p>
+                    <a href="#" class="article-link">Ler mais →</a>
+                </div>
+            </article>
+
+            <article class="article-card reveal">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400" alt="Depressão">
+                </div>
+                <div class="article-content">
+                    <h4>Depressão: sinais e quando buscar ajuda</h4>
+                    <p>Reconheça os sintomas e entenda a importância do acompanhamento profissional.</p>
+                    <a href="#" class="article-link">Ler mais →</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
 </section>
 
 <!-- ================= CONTATO ================= -->
@@ -164,8 +287,37 @@
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
-    <div class="container">
-        <p>© terapia é para todos.</p>
+    <div class="container footer-content">
+        <div class="footer-section">
+            <h4>Sobre</h4>
+            <p>Psicóloga dedicada ao cuidado emocional com ética, acolhimento e respeito à individualidade de cada pessoa.</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Contato</h4>
+            <p>📧 contato@psicologa.com</p>
+            <p>📱 (81) 98702-8550</p>
+            <p>📍 Gonçalves, MG</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Links úteis</h4>
+            <a href="#sobre">Sobre mim</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#contato">Contato</a>
+        </div>
+
+        <div class="footer-section">
+            <h4>Redes Sociais</h4>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Psicóloga - CRP 00/00000 | A terapia é para todos.</p>
+        <p>Desenvolvido com 💜 para cuidar de você</p>
     </div>
 </footer>
 

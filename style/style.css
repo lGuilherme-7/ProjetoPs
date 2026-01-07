@@ -8,10 +8,10 @@
 :root {
     /* --- 1. Paleta de Cores  --- */
 
-    --color-primary: #3A5A60;      /* Teal Profundo: Profissionalismo e Cura */
-    --color-secondary: #C59B76;    /* Areia Dourada: Acolhimento e Calor */
-    --color-base-light: #F9F7F2;   /* Off-White Quente: Fundo principal (não cansa a vista) */
-    --color-base-muted: #E8EFEF;   /* Cinza Esverdeado: Para destacar seções */
+    --color-primary: #8B7BA8;      /* Teal Profundo: Profissionalismo e Cura */
+    --color-secondary: #D4A5A5;    /* Areia Dourada: Acolhimento e Calor */
+    --color-base-light: #FAF8F5;   /* Off-White Quente: Fundo principal (não cansa a vista) */
+    --color-base-muted: #F0EBE3;   /* Cinza Esverdeado: Para destacar seções */
     --color-white: #FFFFFF;        /* Branco Puro: Apenas para cards */
     
     --color-text-main: #2F3E46;    /* Chumbo: Legibilidade suave */
@@ -93,7 +93,7 @@ ul {
 .header {
     background: var(--bg-header);
     padding: 20px 0;
-    position: sticky; /* Opcional: mantém o menu fixo no topo */
+    position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.03);
@@ -108,19 +108,43 @@ ul {
 .logo {
     font-size: 1.5rem;
     color: var(--color-primary);
+    margin: 0;
 }
 
-.nav a {
-    margin-left: 24px;
+.navList {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.navList a {
     text-decoration: none;
     color: var(--text-body);
-    font-weight: 500;
+    font-weight: 550;
     font-size: 0.95rem;
     transition: color 0.3s;
 }
 
-.nav a:hover {
+.navList a:hover {
     color: var(--color-secondary);
+}
+
+/* ================= MENU HAMBÚRGUER ================= */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    z-index: 1001;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
 }
 
 /* ================= HERO ================= */
@@ -206,6 +230,20 @@ ul {
     font-size: 1.2rem;
 }
 
+/* ================= VÍDEO ================= */
+.video-container {
+    max-width: 800px;
+    margin: 30px auto;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.video-container iframe {
+    display: block;
+    aspect-ratio: 16/9;
+}
+
 /* ================= SERVIÇOS ================= */
 .services-list {
     display: grid;
@@ -240,13 +278,15 @@ ul {
 .faq-item {
     margin-bottom: 16px;
     border-radius: var(--radius-sm);
-    overflow: hidden; /* Garante que o conteúdo não vaze nas bordas */
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
 }
 
 .faq-question {
     width: 100%;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+    background: transparent;
+    border: none;
     padding: 20px 24px;
     display: flex;
     justify-content: space-between;
@@ -261,36 +301,40 @@ ul {
 }
 
 .faq-question:hover {
-    background: #fff;
-    border-color: var(--color-secondary);
+    background: rgba(197, 155, 118, 0.05);
 }
 
 .faq-question .arrow {
     transition: transform 0.3s ease;
     color: var(--color-secondary);
+    font-size: 1.2rem;
 }
 
 .faq-answer {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.4s ease;
-    background-color: rgba(255,255,255, 0.6); /* Levemente transparente */
-    padding: 0 24px;
-    color: var(--text-muted);
+    background-color: rgba(255,255,255, 0.5);
 }
 
-.faq-item.active .faq-answer {
-    max-height: 200px;
+.faq-answer p {
+    color: var(--text-body);
+    margin: 0;
     padding: 20px 24px;
-    border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Quando ativo*/
+.faq-item.active .faq-answer {
+    max-height: 500px;
 }
 
 .faq-item.active .arrow {
     transform: rotate(180deg);
 }
 
-/* ================= REVEAL ANIMATION ================= */
+/* ================= REVEAL - CORRIGIDO ================= */
 .reveal {
+    opacity: 1;
     transform: translateY(30px);
     transition: all 0.8s ease;
 }
@@ -300,17 +344,106 @@ ul {
     transform: translateY(0);
 }
 
-/* ================= FOOTER ================= */
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+}
 
-.footer {
-    background: var(--color-primary);
-    padding: 30px 0;
-    text-align: center;
+.reveal-hidden.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ================= ARTIGOS ================= */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     margin-top: 40px;
 }
 
-.footer p {
-    color: rgba(255,255,255, 0.8); 
-    margin: 10px 0;
+.article-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+}
+
+.article-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.article-content {
+    padding: 24px;
+}
+
+.article-content h4 {
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.article-link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.article-link:hover {
+    text-decoration: underline;
+}
+
+/* ================= FOOTER ================= */
+
+/* ================= FOOTER COMPLETO ================= */
+.footer {
+    background: var(--color-primary);
+    padding: 60px 0 20px;
+    color: rgba(255,255,255, 0.9);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h4 {
+    color: var(--color-white);
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+}
+
+.footer-section p,
+.footer-section a {
+    color: rgba(255,255,255, 0.8);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: var(--color-secondary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255, 0.2);
+}
+
+.footer-bottom p {
+    margin: 5px 0;
     font-size: 0.9rem;
 }
