@@ -18,7 +18,7 @@ leiam conteúdos informativos sobre saúde mental;
 
 entrem em contato ou agendem uma consulta com facilidade.
 
-🎯 Objetivos do Projeto
+🎯 Objetivos do Projeto.
 
 Criar uma presença online profissional para psicólogos
 
